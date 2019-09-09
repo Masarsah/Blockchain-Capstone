@@ -1,9 +1,10 @@
 pragma solidity ^0.5.0;
 
-import 'openzeppelin-solidity/contracts/utils/Address.sol';
-import 'openzeppelin-solidity/contracts/drafts/Counters.sol';
-import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
-import 'openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol';
+import '../../node_modules/openzeppelin-solidity/contracts/utils/Address.sol';
+import '../../node_modules/openzeppelin-solidity/contracts/drafts/Counters.sol';
+import '../../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol';
+import '../../node_modules/openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol';
+
 import "./Oraclize.sol";
 
 contract Ownable {
@@ -59,7 +60,7 @@ contract Pausable is Ownable {
     }
 //  4) create 'whenNotPaused' & 'paused' modifier that throws in the appropriate situation
     modifier whenNotPaused() {
-        require(_paused == false,);
+require(_paused == false);
         _;
     }
 
@@ -531,7 +532,6 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
         _tokenURIs[tokenId] = strConcat(_baseTokenURI, uint2str(tokenId));
     }
 
-}
 
 //  TODO's: Create CustomERC721Token contract that inherits from the ERC721Metadata contract. You can name this contract as you please
 //  1) Pass in appropriate values for the inherited ERC721Metadata contract
@@ -541,7 +541,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -takes in a 'to' address, tokenId, and tokenURI as parameters
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
-
+}
 contract ISBERC721Token is ERC721Metadata("capstone", "UDCP", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") {
     function mint(address to, uint256 tokenId, string memory tokenURI)
     public
@@ -552,5 +552,5 @@ contract ISBERC721Token is ERC721Metadata("capstone", "UDCP", "https://s3-us-wes
         return balanceOf(to);
 
     }
-
+}
 
